@@ -47,7 +47,9 @@
       /* Close introduction when clicking on overlay layer? */
       exitOnOverlayClick: true,
       /* Show step numbers in introduction? */
-      showStepNumbers: true
+      showStepNumbers: true,
+      
+      fixedTooltipPosition: false
     };
   }
 
@@ -299,29 +301,38 @@
     //custom css class for tooltip boxes
     var tooltipCssClass = this._options.tooltipClass;
 
-    var currentTooltipPosition = this._introItems[this._currentStep].position;
-    switch (currentTooltipPosition) {
-      case 'top':
-        tooltipLayer.style.left = '15px';
-        tooltipLayer.style.top = '-' + (_getOffset(tooltipLayer).height + 10) + 'px';
-        arrowLayer.className = 'introjs-arrow bottom';
-        break;
-      case 'right':
-        tooltipLayer.style.left = (_getOffset(targetElement).width + 20) + 'px';
-        arrowLayer.className = 'introjs-arrow left';
-        break;
-      case 'left':
-        tooltipLayer.style.top = '15px';
-        tooltipLayer.style.right = (_getOffset(targetElement).width + 20) + 'px';
-        arrowLayer.className = 'introjs-arrow right';
-        break;
-      case 'bottom':
-      // Bottom going to follow the default behavior
-      default:
-        tooltipLayer.style.bottom = '-' + (_getOffset(tooltipLayer).height + 10) + 'px';
-        arrowLayer.className = 'introjs-arrow top';
-        break;
+    //fixed position
+    var fixedTooltipPosition = this._options.fixedTooltipPosition;
+    if (typeof fixedTooltipPosition == true) {
+      tooltipLayer.style.position = "fixed";
     }
+    else {
+      var currentTooltipPosition = this._introItems[this._currentStep].position;
+      switch (currentTooltipPosition) {
+        case 'top':
+          tooltipLayer.style.left = '15px';
+          tooltipLayer.style.top = '-' + (_getOffset(tooltipLayer).height + 10) + 'px';
+          arrowLayer.className = 'introjs-arrow bottom';
+          break;
+        case 'right':
+          tooltipLayer.style.left = (_getOffset(targetElement).width + 20) + 'px';
+          arrowLayer.className = 'introjs-arrow left';
+          break;
+        case 'left':
+          tooltipLayer.style.top = '15px';
+          tooltipLayer.style.right = (_getOffset(targetElement).width + 20) + 'px';
+          arrowLayer.className = 'introjs-arrow right';
+          break;
+        case 'bottom':
+        // Bottom going to follow the default behavior
+        default:
+          tooltipLayer.style.bottom = '-' + (_getOffset(tooltipLayer).height + 10) + 'px';
+          arrowLayer.className = 'introjs-arrow top';
+          break;
+      }
+    }
+
+    
   }
 
   /**
