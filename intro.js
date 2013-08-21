@@ -303,7 +303,7 @@
 
     //fixed position
     var fixedTooltipPosition = this._options.fixedTooltipPosition;
-    if (typeof fixedTooltipPosition == true) {
+    if (fixedTooltipPosition == true && tooltipCssClass.length > 0) {
       tooltipLayer.style.position = "fixed";
     }
     else {

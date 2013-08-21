@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>HTML in tooltip</title>
+    <title>Fixed tooltip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Intro.js - Better introductions for websites and features with a step-by-step guide for your projects.">
     <meta name="author" content="Afshin Mehrabani (@afshinmeh) in usabli.ca group">
@@ -15,6 +15,12 @@
     <link href="../../introjs.css" rel="stylesheet">
 
     <link href="../assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <style type="text/css">
+      .fixed-tooltip {
+        bottom: 30%;
+        left: 40%;
+      }
+    </style>
   </head>
 
   <body>
@@ -80,25 +86,23 @@
               },
               {
                 element: '#step2',
-                intro: "Ok, <i>wasn't</i> that fun?",
-                position: 'right'
+                intro: "Ok, <i>wasn't</i> that fun?"
               },
               {
                 element: '#step3',
-                intro: 'More features, more <span style="color: red;">f</span><span style="color: green;">u</span><span style="color: blue;">n</span>.',
-                position: 'left'
+                intro: 'More features, more <span style="color: red;">f</span><span style="color: green;">u</span><span style="color: blue;">n</span>.'
               },
               {
                 element: '#step4',
-                intro: "<span style='font-family: Tahoma'>Another step with new font!</span>",
-                position: 'bottom'
+                intro: "<span style='font-family: Tahoma'>Another step with new font!</span>"
               },
               {
                 element: '#step5',
                 intro: '<strong>Get</strong> it, <strong>use</strong> it.'
               }
             ],
-            fixedTooltipPosition: true
+            fixedTooltipPosition: true,
+            tooltipClass: "fixed-tooltip"
           });
 
           intro.start();
